@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => '/employees/register'], function () {
+    Route::get('form', 'Employee\\EmployeeRegisterController@showForm')
+        ->name('employees-register#showForm');
+    Route::post('confirm', 'Employee\\EmployeeRegisterController@confirm')
+        ->name('employees-register#confirm');
+    Route::post('/', 'Employee\\EmployeeRegisterController@registerThenRedirect')
+        ->name('employees-register#registerThenRedirect');
+    Route::get('complete', 'Employee\\EmployeeRegisterController@showComplete')
+        ->name('employees-register#showComplete');
+});

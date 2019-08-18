@@ -19,11 +19,16 @@ class MailAddress
         if (self::validateNullOrEmptyString($value)) {
             throw new InvalidArgumentException('入力してください' . var_export($value, true));
         }
-        if(self::validateInvalidMailAddressFormat($value)){
+        if (self::validateInvalidMailAddressFormat($value)) {
             throw new InvalidArgumentException('メールアドレスが正しくありません' . var_export($value, true));
         }
 
         $this->value = strval($value);
+    }
+
+    public static function of($value): self
+    {
+        return new self($value);
     }
 
     public static function validateNullOrEmptyString($value): bool
@@ -34,5 +39,15 @@ class MailAddress
     public static function validateInvalidMailAddressFormat($value): bool
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL) === false;
+    }
+
+    public function value(): string
+    {
+        return $this->value;
+    }
+
+    public function __toString(): string
+    {
+        return $this->value();
     }
 }

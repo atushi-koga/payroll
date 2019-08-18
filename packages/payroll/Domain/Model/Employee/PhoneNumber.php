@@ -33,6 +33,11 @@ class PhoneNumber
         $this->value = strval($value);
     }
 
+    public static function of($value): self
+    {
+        return new self($value);
+    }
+
     public static function validateNullOrEmptyString($value): bool
     {
         return $value === '' || is_null($value);
@@ -40,13 +45,23 @@ class PhoneNumber
 
     public static function validateInvalidPhoneNumberFormat($value): bool
     {
-        return in_array(preg_match('/^¥d{2,4}-¥d{2,4}-¥d{2,4}$/', $value), [0, false], true);
+        return in_array(preg_match('/^\d{2,4}-\d{2,4}-\d{2,4}$/', $value), [0, false], true);
     }
 
     public static function validateInvalidLength($value): bool
     {
         $numberCharLength = mb_strlen(str_replace('-', '', $value));
 
-        return self::MIN_LENGTH <= $numberCharLength && $numberCharLength <= self::MAX_LENGTH;
+        return $numberCharLength < self::MIN_LENGTH || self::MAX_LENGTH < $numberCharLength;
+    }
+
+    public function value(): string
+    {
+        return $this->value;
+    }
+
+    public function __toString(): string
+    {
+        return $this->value();
     }
 }
