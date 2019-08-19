@@ -4,12 +4,14 @@ declare(strict_types=1);
 namespace Payroll\Infra\Repository\Employee;
 
 use Illuminate\Support\Facades\DB;
+use Payroll\Domain\Model\Employee\Employee;
 use Payroll\Domain\Model\Employee\EmployeeNumber;
 use Payroll\Domain\Model\Employee\EmployeeRepositoryInterface;
 use Payroll\Domain\Model\Employee\MailAddress;
 use Payroll\Domain\Model\Employee\Name;
 use Payroll\Domain\Model\Employee\PhoneNumber;
 use Payroll\Domain\Type\Date\DateTime;
+use stdClass;
 
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
@@ -190,5 +192,52 @@ class EmployeeRepository implements EmployeeRepositoryInterface
                 'employee_id' => $employeeNumber->value(),
                 'created_at'  => DateTime::now()->toString(),
             ]);
+    }
+
+    public function choose(EmployeeNumber $employeeNumber): Employee
+    {
+        return $this->selectByEmployeeNumber($employeeNumber);
+    }
+
+    public function selectByEmployeeNumber(EmployeeNumber $employeeNumber): Employee
+    {
+        $query = "
+SELECT
+  sub_employees.id AS employee_id
+  ,employee_names.name AS name
+  ,employee_emails.email AS email
+  ,employee_phones.phone AS phone
+FROM
+  (
+    SELECT
+      id
+    FROM
+      employees
+    WHERE
+      id = ?
+  ) AS sub_employees
+  INNER JOIN employee_names
+  ON  employee_names.employee_id = sub_employees.id
+  INNER JOIN employee_emails
+  ON  employee_emails.employee_id = sub_employees.id
+  INNER JOIN employee_phones
+  ON  employee_phones.employee_id = sub_employees.id
+  INNER JOIN under_contract
+  ON  under_contract.employee_id = sub_employees.id
+;
+        ";
+        $result = DB::selectOne($query, [$employeeNumber->value()]);
+
+        return $this->toEmployee($result);
+    }
+
+    private function toEmployee(stdClass $result): Employee
+    {
+        return new Employee(
+            EmployeeNumber::of($result->employee_id),
+            Name::of($result->name),
+            MailAddress::of($result->email),
+            PhoneNumber::of($result->phone)
+        );
     }
 }

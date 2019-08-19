@@ -14,7 +14,7 @@ class CreateHourlyWageContractHistoriesTable extends Migration
     public function up()
     {
         Schema::create('hourly_wage_contract_histories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('hourly_wage_id');
             $table->bigInteger('employee_id');
             $table->integer('hourly_wage');
             $table->integer('over_time_hourly_extra_wage');

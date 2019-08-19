@@ -5,15 +5,11 @@ namespace Payroll\Domain\Type\Date;
 
 use DateTimeImmutable;
 
-class DateTime
+class Date
 {
     /** @var DateTimeImmutable */
     private $value;
 
-    /**
-     * DateTime constructor.
-     * @param DateTimeImmutable $value
-     */
     public function __construct(DateTimeImmutable $value)
     {
         $this->value = $value;
@@ -36,7 +32,12 @@ class DateTime
 
     public function toString(): string
     {
-        return $this->value->format('Y-m-d H:i:s');
+        return $this->value->format('Y-m-d');
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
     }
 
     /**

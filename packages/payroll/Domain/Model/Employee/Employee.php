@@ -36,5 +36,35 @@ class Employee
         $this->phoneNumber = $phoneNumber;
     }
 
+    /**
+     * @return EmployeeNumber
+     */
+    public function employeeNumber(): EmployeeNumber
+    {
+        return $this->employeeNumber;
+    }
 
+    /**
+     * @return Name
+     */
+    public function name(): Name
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return MailAddress
+     */
+    public function mailAddress(): MailAddress
+    {
+        return $this->mailAddress;
+    }
+
+    /**
+     * @return PhoneNumber
+     */
+    public function phoneNumber(): PhoneNumber
+    {
+        return $this->phoneNumber;
+    }
 }

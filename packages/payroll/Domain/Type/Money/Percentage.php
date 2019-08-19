@@ -1,17 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Payroll\Domain\Model\Employee;
+namespace Payroll\Domain\Type\Money;
 
-class EmployeeNumber
+class Percentage
 {
     /** @var int */
     private $value;
 
-    /**
-     * EmployeeNumber constructor.
-     * @param int $value
-     */
     public function __construct(int $value)
     {
         $this->value = $value;
@@ -22,6 +18,15 @@ class EmployeeNumber
         return new self($value);
     }
 
+    /*
+     * 100で割った値を返す
+     * @todo: BC Math関数を使う
+     */
+    public function rate()
+    {
+
+    }
+
     public function value(): int
     {
         return $this->value;
@@ -29,6 +34,6 @@ class EmployeeNumber
 
     public function __toString(): string
     {
-        return strval($this->value());
+        return strval($this->value);
     }
 }

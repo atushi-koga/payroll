@@ -1,20 +1,18 @@
 <?php
 declare(strict_types=1);
 
-namespace Payroll\Domain\Model\Employee;
+namespace Payroll\Domain\Model\Legislation;
 
-class EmployeeNumber
+use Payroll\Domain\Type\Money\Percentage;
+
+class ExtraPayRate
 {
-    /** @var int */
+    /** @var Percentage */
     private $value;
 
-    /**
-     * EmployeeNumber constructor.
-     * @param int $value
-     */
     public function __construct(int $value)
     {
-        $this->value = $value;
+        $this->value = Percentage::of($value);
     }
 
     public static function of(int $value): self
@@ -22,13 +20,13 @@ class EmployeeNumber
         return new self($value);
     }
 
-    public function value(): int
+    public function value(): Percentage
     {
         return $this->value;
     }
 
     public function __toString(): string
     {
-        return strval($this->value());
+        return strval($this->value);
     }
 }

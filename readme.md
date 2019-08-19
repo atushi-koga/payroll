@@ -77,3 +77,6 @@ under_contract
 
 - 勤務時間の入力
 名前、勤務日、開始時刻、終了時刻、休憩時間、休憩時間（深夜）
+
+## install
+yum install php72-php-bcmath
