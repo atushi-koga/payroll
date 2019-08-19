@@ -21,4 +21,9 @@ class EmployeeNumber
     {
         return $this->value;
     }
+
+    public function __toString(): string
+    {
+        return strval($this->value());
+    }
 }

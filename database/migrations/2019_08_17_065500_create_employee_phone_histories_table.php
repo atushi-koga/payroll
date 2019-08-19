@@ -14,8 +14,8 @@ class CreateEmployeePhoneHistoriesTable extends Migration
     public function up()
     {
         Schema::create('employee_phone_histories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('employee_id');
+            $table->bigIncrements('employee_phone_id');
+            $table->bigInteger('employee_id');
             $table->string('phone', 13);
             $table->timestamp('created_at');
 

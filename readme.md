@@ -1,19 +1,7 @@
-## About Laravel
+## 参考
+**[ドメイン駆動設計サンプルコードの徹底解説](https://www.slideshare.net/masuda220/ss-139660520)**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
-https://www.slideshare.net/masuda220/ss-139660520
-
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Tighten Co.](https://tighten.co)**
-- [UserInsights](https://userinsights.com)
-
-# UseCase
+## UseCase
 - 従業員の一覧表示
 従業員番号、氏名、現在の時給、開始日
 現在の時給：

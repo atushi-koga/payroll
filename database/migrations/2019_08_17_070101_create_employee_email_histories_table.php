@@ -14,8 +14,8 @@ class CreateEmployeeEmailHistoriesTable extends Migration
     public function up()
     {
         Schema::create('employee_email_histories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('employee_id');
+            $table->bigIncrements('employee_email_id');
+            $table->bigInteger('employee_id');
             $table->string('email', 255);
             $table->timestamp('created_at');
 

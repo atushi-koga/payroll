@@ -14,10 +14,10 @@ class CreateExpirationOfContractTable extends Migration
     public function up()
     {
         Schema::create('expiration_of_contract', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('employee_id');
+            $table->bigInteger('employee_id');
             $table->timestamp('created_at');
 
+            $table->primary('employee_id');
             $table->foreign('employee_id')
                 ->references('id')
                 ->on('employees');

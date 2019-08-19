@@ -15,8 +15,8 @@ class CreateTimeRecordsTable extends Migration
     {
         Schema::create('time_records', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employee_id');
-            $table->integer('time_record_history_id');
+            $table->bigInteger('employee_id');
+            $table->bigInteger('time_record_history_id');
             $table->date('date');
             $table->string('start_time', 5);
             $table->string('end_time', 5);

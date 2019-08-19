@@ -14,8 +14,8 @@ class CreateEmployeeNameHistoriesTable extends Migration
     public function up()
     {
         Schema::create('employee_name_histories', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('employee_id');
+            $table->bigIncrements('employee_name_id');
+            $table->bigInteger('employee_id');
             $table->string('name', 40);
             $table->timestamp('created_at');
 

@@ -14,17 +14,17 @@ class CreateEmployeePhonesTable extends Migration
     public function up()
     {
         Schema::create('employee_phones', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('employee_id');
-            $table->integer('employee_phone_history_id');
+            $table->bigInteger('employee_id');
+            $table->bigInteger('employee_phone_id');
             $table->string('phone', 13);
             $table->timestamp('created_at');
 
+            $table->primary('employee_id');
             $table->foreign('employee_id')
                 ->references('id')
                 ->on('employees');
-            $table->foreign('employee_phone_history_id')
-                ->references('id')
+            $table->foreign('employee_phone_id')
+                ->references('employee_phone_id')
                 ->on('employee_phone_histories');
         });
     }
