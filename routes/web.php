@@ -1,20 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return view('welcome');
 });
 
+/*
+ * 従業員の登録
+ */
 Route::group(['prefix' => 'employees/register'], function () {
     Route::get('form', 'Employee\\EmployeeRegisterController@showForm')
         ->name('employees-register#showForm');
@@ -25,7 +17,16 @@ Route::group(['prefix' => 'employees/register'], function () {
     Route::get('complete', 'Employee\\EmployeeRegisterController@showComplete')
         ->name('employees-register#showComplete');
 });
+/*
+ * 従業員情報の詳細
+ */
+Route::get('employees/{employeeNumber}', 'Employee\\EmployeeDetailController@detail')
+    ->name('employees#detail');
 
+
+/*
+ * 時給の登録
+ */
 Route::group(['prefix' => 'wages/{employeeNumber}/register'], function () {
     Route::get('form', 'Wage\\WageRegisterController@showForm')
         ->name('wages-register#showForm');

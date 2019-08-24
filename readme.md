@@ -2,6 +2,18 @@
 **[ドメイン駆動設計サンプルコードの徹底解説](https://www.slideshare.net/masuda220/ss-139660520)**
 
 ## UseCase
+- 従業員情報の新規登録
+名前、メールアドレス、電話番号
+
+- 時給の登録(入力->確認->完了)
+開始日、時給
+
+- 従業員情報の詳細表示
+従業員番号、名前、メールアドレス、電話番号
+
+- 時給の履歴
+開始日付、時給
+
 - 従業員の一覧表示
 従業員番号、氏名、現在の時給、開始日
 現在の時給：
@@ -20,25 +32,6 @@ sql：
 従業員ID、名前、メールアドレス電話番号をselect
 
 $contracts = ContractQueryService.findContracts($contractingEmployees);
-
-- 従業員情報の新規登録(入力->確認->完了)
-名前、メールアドレス、電話番号
-
-・以下テーブルにデータを登録
-employees
-employee_name_histories, employee_names, 
-employee_email_histories, employee_emails, 
-employee_phone_histories, employee_phones,
-under_contract 
-
-- 従業員情報の詳細表示
-従業員番号、名前、メールアドレス、電話番号
-
-- 時給の登録(入力->確認->完了)
-開始日、時給
-
-- 時給の履歴
-開始日付、時給
 
 - 給与の一覧表示
 月、従業員番号、氏名、支払額、備考
