@@ -1,17 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Payroll\Domain\Model\Employee;
+namespace Payroll\Domain\Model\Contract;
 
-class ContractingEmployees
+class Contracts
 {
-    /** @var Employee[] */
+    /** @var Contract[] */
     private $list;
 
-    /**
-     * ContractingEmployees constructor.
-     * @param Employee[] $list
-     */
     public function __construct(array $list)
     {
         $this->list = $list;
@@ -26,5 +22,4 @@ class ContractingEmployees
     {
         return $this->list;
     }
-
 }

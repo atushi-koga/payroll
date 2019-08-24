@@ -18,6 +18,11 @@ Route::group(['prefix' => 'employees/register'], function () {
         ->name('employees-register#showComplete');
 });
 /*
+ * 従業員の一覧
+ */
+Route::get('employees', 'Employee\\EmployeeListController@list')
+    ->name('employees#list');
+/*
  * 従業員情報の詳細
  */
 Route::get('employees/{employeeNumber}', 'Employee\\EmployeeDetailController@detail')

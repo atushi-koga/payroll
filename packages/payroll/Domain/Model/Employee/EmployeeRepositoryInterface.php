@@ -20,4 +20,6 @@ interface EmployeeRepositoryInterface
     public function registerInspireContract(EmployeeNumber $employeeNumber);
 
     public function choose(EmployeeNumber $employeeNumber);
+
+    public function underContracts();
 }

@@ -43,6 +43,11 @@ class Money
         return $this->value > $other->asInt();
     }
 
+    public function equal(Money $other): bool
+    {
+        return $this->value == $other->asInt();
+    }
+
     public function asInt(): int
     {
         return $this->value;

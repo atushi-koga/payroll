@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Payroll\Infra\Repository\Employee;
 
 use Illuminate\Support\Facades\DB;
+use Payroll\Domain\Model\Employee\ContractingEmployees;
 use Payroll\Domain\Model\Employee\Employee;
 use Payroll\Domain\Model\Employee\EmployeeNumber;
 use Payroll\Domain\Model\Employee\EmployeeRepositoryInterface;
@@ -240,4 +241,35 @@ FROM
             PhoneNumber::of($result->phone)
         );
     }
+
+    public function underContracts(): ContractingEmployees
+    {
+        $sql = "
+SELECT
+  under_contract.employee_id
+  ,employee_names.name
+  ,employee_emails.email
+  ,employee_phones.phone
+FROM
+  under_contract
+  INNER JOIN employee_names
+  ON  under_contract.employee_id = employee_names.employee_id
+  INNER JOIN employee_emails
+  ON  under_contract.employee_id = employee_emails.employee_id
+  INNER JOIN employee_phones
+  ON  under_contract.employee_id = employee_phones.employee_id
+ORDER BY
+  under_contract.employee_id
+;";
+        $results = DB::select($sql);
+
+        $employees = [];
+        foreach($results as $result){
+            $employees[] = $this->toEmployee($result);
+        }
+
+        return ContractingEmployees::of($employees);
+    }
+
+
 }

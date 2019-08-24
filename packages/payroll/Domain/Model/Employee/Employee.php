@@ -36,6 +36,15 @@ class Employee
         $this->phoneNumber = $phoneNumber;
     }
 
+    public static function of(
+        EmployeeNumber $employeeNumber,
+        Name $name,
+        MailAddress $mailAddress,
+        PhoneNumber $phoneNumber
+    ): self {
+        return new self($employeeNumber, $name, $mailAddress, $phoneNumber);
+    }
+
     /**
      * @return EmployeeNumber
      */

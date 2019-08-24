@@ -30,6 +30,26 @@ class Date
         return new self(new DateTimeImmutable());
     }
 
+    public static function distantFuture(): self
+    {
+        return new self(new DateTimeImmutable('9999-12-31'));
+    }
+
+    public function equal(Date $date): bool
+    {
+        return $this->value == $date->value();
+    }
+
+    public function isBeforeOrEqual(Date $date): bool
+    {
+        return $this->value <= $date->value();
+    }
+
+    public function isAfter(Date $date): bool
+    {
+        return $this->value > $date->value();
+    }
+
     public function toString(): string
     {
         return $this->value->format('Y-m-d');
