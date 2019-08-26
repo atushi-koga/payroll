@@ -5,7 +5,9 @@ namespace Payroll\App\Service\Contract;
 
 use Payroll\Domain\Model\Contract\ContractRepositoryInterface;
 use Payroll\Domain\Model\Contract\Contracts;
+use Payroll\Domain\Model\Contract\ContractWages;
 use Payroll\Domain\Model\Employee\ContractingEmployees;
+use Payroll\Domain\Model\Employee\EmployeeNumber;
 
 class ContractQueryService
 {
@@ -20,5 +22,10 @@ class ContractQueryService
     public function findContracts(ContractingEmployees $contractingEmployees): Contracts
     {
         return $this->contractRepo->findContracts($contractingEmployees);
+    }
+
+    public function getContractWages(EmployeeNumber $employeeNumber): ContractWages
+    {
+        return $this->contractRepo->getContractWages($employeeNumber);
     }
 }

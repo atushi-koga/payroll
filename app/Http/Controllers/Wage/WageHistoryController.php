@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Employee;
+namespace App\Http\Controllers\Wage;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Payroll\App\Service\Contract\ContractQueryService;
 use Payroll\App\Service\EmployeeQueryService;
-use Payroll\Domain\Model\Employee\ContractingEmployees;
+use Payroll\Domain\Model\Employee\EmployeeNumber;
 
-class EmployeeListController extends Controller
+class WageHistoryController extends Controller
 {
     /** @var EmployeeQueryService */
     private $employeeQueryService;
@@ -25,13 +25,13 @@ class EmployeeListController extends Controller
     }
 
     /*
-     * 従業員の一覧表示
+     * 従業員の時給の変遷を表示
      */
-    public function list()
+    public function history($employeeNumber)
     {
-        $contractingEmployees = $this->employeeQueryService->contractingEmployees();
-        $contracts = $this->contractQueryService->findContracts($contractingEmployees);
+        $employee = $this->employeeQueryService->choose(EmployeeNumber::of($employeeNumber));
+        $contractWages = $this->contractQueryService->getContractWages($employee->employeeNumber());
 
-        return view('employee.list', compact('contracts'));
+        return view('wage.history', compact('employee', 'contractWages'));
     }
 }

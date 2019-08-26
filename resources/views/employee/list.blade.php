@@ -11,8 +11,9 @@
     <div>従業員の一覧</div>
     <br>
     <div>
-        <a>従業員の新規登録</a>
+        <a href="{{ route('employees-register#showForm') }}">従業員の新規登録</a>
     </div>
+    <br>
     <br>
     <div>
         <table>
@@ -28,7 +29,9 @@
             @foreach($contracts->list() as $contract)
                 <tr>
                     <td>{{ $contract->employeeNumber() }}</td>
-                    <td>{{ $contract->employeeName() }}</td>
+                    <td>
+                        <a href="{{ route('employees#detail', ['employeeNumber' => $contract->employeeNumber()]) }}">{{ $contract->employeeName() }}</a>
+                    </td>
                     <td>{{ $contract->todayHourlyWage() }}</td>
                     <td>{{ $contract->contractStartingDate() }}</td>
                 </tr>

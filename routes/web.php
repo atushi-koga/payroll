@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 /*
@@ -27,7 +27,11 @@ Route::get('employees', 'Employee\\EmployeeListController@list')
  */
 Route::get('employees/{employeeNumber}', 'Employee\\EmployeeDetailController@detail')
     ->name('employees#detail');
-
+/**
+ * 時給の履歴
+ */
+Route::get('wages/{employeeNumber}', 'Wage\\WageHistoryController@history')
+    ->name('wages#history');
 
 /*
  * 時給の登録

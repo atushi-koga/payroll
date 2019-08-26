@@ -91,16 +91,16 @@ class ContractRepository implements ContractRepositoryInterface
         return Contracts::of($contracts);
     }
 
-    private function getContractWages(EmployeeNumber $employeeNumber): ContractWages
+    public function getContractWages(EmployeeNumber $employeeNumber): ContractWages
     {
         $hourlyWageContracts = $this->selectHourlyWageContracts($employeeNumber);
 
-        $contractWages = [];
+        $contractWageList = [];
         foreach ($hourlyWageContracts as $hourlyWageContract) {
-            $contractWages[] = $this->toContractWage($hourlyWageContract);
+            $contractWageList[] = $this->toContractWage($hourlyWageContract);
         }
 
-        return ContractWages::of($contractWages);
+        return ContractWages::of($contractWageList);
     }
 
     private function toContractWage(stdClass $hourlyWageContract): ContractWage

@@ -13,4 +13,6 @@ interface ContractRepositoryInterface
     public function registerHourlyWage(EmployeeNumber $employeeNumber, Date $startDate, WageCondition $wageCondition);
 
     public function findContracts(ContractingEmployees $contractingEmployees);
+
+    public function getContractWages(EmployeeNumber $employeeNumber);
 }

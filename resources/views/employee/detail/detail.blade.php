@@ -11,8 +11,9 @@
     <div>従業員情報の詳細</div>
     <br>
     <div>
-        <a>時給の履歴</a>
+        <a href="{{ route('wages#history', ['employeeNumber' => $employee->employeeNumber()]) }}">時給の履歴</a>
     </div>
+    <br><br>
     <div>
         <div>
             <div>名前：{{ $employee->employeeNumber() }}</div>
