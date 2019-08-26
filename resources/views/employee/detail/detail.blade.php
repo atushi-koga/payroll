@@ -28,6 +28,10 @@
             <div>電話番号：{{ $employee->phoneNumber() }}</div>
         </div>
     </div>
+    <br>
+    <div>
+        <div><a href="{{ route('employees#list') }}">一覧に戻る</a></div>
+    </div>
 </div>
 </body>
 </html>

@@ -1,3 +1,13 @@
+## up
+cd payroll
+docker-compose up -d
+ブラウザで http://localhost/ にアクセス
+
+
+
+
+
+
 ## 参考
 **[ドメイン駆動設計サンプルコードの徹底解説](https://www.slideshare.net/masuda220/ss-139660520)**
 
