@@ -13,7 +13,7 @@
 <div>ダッシュボード</div><br>
 <div>
     <div><a href="{{ route('time-record-register#showForm') }}">勤務時間の入力</a></div>
-    <div>給与の一覧</div>
+    <div><a href="{{ route('payroll#list') }}">給与の一覧</a></div>
     <div><a href="{{ route('employees#list') }}">従業員の一覧</a></div>
 </div>
 </body>

@@ -59,3 +59,11 @@ Route::group(['prefix' => 'time-record'], function () {
     Route::post('register', 'TimeRecord\\TimeRecordRegisterController@registerThenRedirect')
         ->name('time-record-register#registerThenRedirect');
 });
+
+/**
+ * 給与の一覧
+ */
+Route::group(['prefix' => 'payroll'], function () {
+    Route::get('/', 'Payroll\\PayrollController@list')
+        ->name('payroll#list');
+});

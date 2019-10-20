@@ -6,6 +6,10 @@ namespace Payroll\Domain\Common;
 use BadMethodCallException;
 use InvalidArgumentException;
 
+/*
+ * 古いversion
+ * Domain/Type/Enum配下のものを使う
+ */
 trait EnumTrait
 {
     private $scalar;
