@@ -27,4 +27,9 @@ class ActualWorkTime
         $this->dayTimeBreakTime = $dayTimeBreakTime;
         $this->midnightBreakTime = $midnightBreakTime;
     }
+
+    public function workTime(): WorkTime
+    {
+
+    }
 }

@@ -31,4 +31,9 @@ class Minute
     {
         return $this->value;
     }
+
+    public function floatValue(): float
+    {
+        return floatval($this->value);
+    }
 }

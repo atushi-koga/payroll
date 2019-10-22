@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Payroll\Domain\Model\TimeRecord;
 
 use Payroll\Domain\Model\Employee\EmployeeNumber;
+use Payroll\Domain\Type\Date\Date;
 
 class TimeRecord
 {
@@ -14,13 +15,13 @@ class TimeRecord
     private $workDate;
 
     /** @var ActualWorkTime */
-    private $ActualWorkTime;
+    private $actualWorkTime;
 
     public function __construct(EmployeeNumber $employeeNumber, WorkDate $workDate, ActualWorkTime $ActualWorkTime)
     {
         $this->employeeNumber = $employeeNumber;
         $this->workDate = $workDate;
-        $this->ActualWorkTime = $ActualWorkTime;
+        $this->actualWorkTime = $ActualWorkTime;
     }
 
     /**
@@ -42,10 +43,13 @@ class TimeRecord
     /**
      * @return ActualWorkTime
      */
-    public function ActualWorkTime(): ActualWorkTime
+    public function actualWorkTime(): ActualWorkTime
     {
-        return $this->ActualWorkTime;
+        return $this->actualWorkTime;
     }
-
-
+    
+    public function date(): Date
+    {
+        return $this->workDate->value();
+    }
 }

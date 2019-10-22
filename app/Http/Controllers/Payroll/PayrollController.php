@@ -37,8 +37,8 @@ class PayrollController extends Controller
         }
 
         $contractingEmployees = $this->employeeQueryService->contractingEmployees();
-        $payRolls = $this->payrollQueryCoordinator->payrolls($contractingEmployees, $workMonth);
+        $payrolls = $this->payrollQueryCoordinator->payrolls($contractingEmployees, $workMonth);
 
-        return view('payroll.list', compact('payRolls'));
+        return view('payroll.list', compact('payrolls'));
     }
 }
